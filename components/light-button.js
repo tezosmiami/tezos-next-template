@@ -11,9 +11,11 @@ export const LightButton = () => {
   function handleLightToggle() {
       if(!lightMode) {
           document.body.classList.add('lightMode');
+          document.documentElement.classList.add('lightMode')
           window?.localStorage.setItem('lightMode', "true");
       } else {
           document.body.classList.remove('lightMode');
+          document.documentElement.classList.remove('lightMode')
           window?.localStorage.setItem('lightMode', 'false');
       }
       setLightMode(!lightMode);

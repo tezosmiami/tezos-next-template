@@ -9,7 +9,9 @@ const options = {
   name: 'Tezos Miami'
  };
   
-const wallet = new BeaconWallet(options);
+if (process.browser){
+  const wallet = new BeaconWallet(options);
+}
 
 export const usePassengerContext = () => {
 
@@ -32,8 +34,8 @@ export const PassengerContextProvider = ({ children }) => {
 
   useEffect( () => {
      const getLoggedIn = async () => {
-        if (await wallet?.client?.getActiveAccount()) { 
-          setActiveAccount(await wallet?.client?.getActiveAccount());
+        if (await wallet.client.getActiveAccount()) { 
+          setActiveAccount(await wallet.client.getActiveAccount());
           const address =  await wallet.getPKH();
           setAddress(address);
           tezos.setWalletProvider(wallet);
@@ -44,7 +46,7 @@ export const PassengerContextProvider = ({ children }) => {
     }, []);
   
   async function logIn() {
-    app.currentUser && await app.currentUser?.logOut();
+    app.currentUser && await app.currentUser.logOut();
     await wallet.client.clearActiveAccount();
     await wallet.client.requestPermissions({
       network: {
