@@ -1,9 +1,20 @@
+:root{
+  color:#7800ff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 33px;
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Courier New, Helvetica Neue, sans-serif;
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 33px;
+  height:100vh
 }
 
 a {
@@ -13,4 +24,44 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+div{
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size:18px;
+  width: 100vw; 
+
+}
+
+header{
+  
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  width:100vw;
+  height: 77px;
+}
+
+button {
+  color: inherit;
+  background-color:transparent;
+  border:none;
+  font-size:18px;
+  cursor: pointer;
+  font-family:  inherit
+
+}
+.lightMode {
+   background-color: antiquewhite;
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 18px;
+  width: 100%;
+
 }
