@@ -5,7 +5,9 @@ export const LightButton = () => {
 
   useEffect(() => {
       const localLight = window.localStorage.getItem('lightMode');
-      if(localLight === 'true') setLightMode(true);
+      if(localLight === 'true') {document.documentElement.classList.add('lightMode');
+      setLightMode(true);
+     }
   }, [])
  
   function handleLightToggle() {

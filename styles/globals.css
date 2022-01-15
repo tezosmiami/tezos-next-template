@@ -1,5 +1,5 @@
 :root{
-  color:#7800ff;
+  color:#0e00cf;
   font-family: 'Courier New', Courier, monospace;
   font-size: 33px;
 }
@@ -14,7 +14,7 @@ body {
   background-color: black;
   font-family: 'Courier New', Courier, monospace;
   font-size: 33px;
-  height:100vh
+  height:100%
 }
 
 a {
@@ -64,4 +64,28 @@ footer{
   bottom: 18px;
   width: 100%;
 
+}
+.images{
+   width:180px;
+}
+
+.image{
+   height:80vh;
+}
+.container{
+
+  width:80vw;
+  height:100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  cursor:pointer;
+}
+.cardcontainer{
+  margin:18px;
+  width:80vw;
+  height:100vh;
+  display: flex;
+  justify-content: space-around;
+  
 }
