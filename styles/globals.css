@@ -70,21 +70,28 @@ footer{
 
 }
 
-.image{
-   height:80vh;
-}
 .container{
 
-  width:100vw;
+  width:88vw;
   height:100vh;
   flex-direction: row;
   flex-wrap:wrap;
   justify-content: center;
   cursor:pointer;
+  
+}
+
+.pop{
+  flex-direction: row;
+  flex-wrap:wrap;
+  height:270px;
+  width:180px;
+}
+.pop:hover {
+  transform: scale( 1.02)
 }
 .cardcontainer{
-  width:88vw;
-  height:100vh;
+ 
   margin:18px;
   display: flex;
   justify-content: space-around;
