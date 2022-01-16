@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { useState } from 'react/cjs/react.development';
 import { usePassengerContext } from "../../context/passenger-context";
 
-
+const hicdex ='https://api.hicdex.com/v1/graphql'
 
 export const getStaticPaths = async() => {
-  const hicdex ='https://api.hicdex.com/v1/graphql'
+ 
   const queryObjkts = `
     query Objkts($tag: String!, $address: String!) {
      hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}}, creator: {address: {_eq: $address}}})  {
@@ -46,7 +46,6 @@ export const getStaticPaths = async() => {
 };
 
 export const getStaticProps = async({params}) => {
-  const hicdex ='https://api.hicdex.com/v1/graphql'
   const queryObjktsbyId = `
       query ObjktsbyId($Id: bigint!) {
       hic_et_nunc_token(where: {id: {_eq: $Id}}) {
@@ -59,7 +58,6 @@ export const getStaticProps = async({params}) => {
         }
         swaps {
           amount
-          amount_left
           price
           status
           id
@@ -83,6 +81,7 @@ export const getStaticProps = async({params}) => {
       console.error(errors)
     }
     const card = data.hic_et_nunc_token
+
 
   return {
       props: {card},
