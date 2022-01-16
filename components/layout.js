@@ -1,13 +1,14 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import {useState, useEffect} from 'react'
+
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 import { usePassengerContext } from "../context/passenger-context";
 import { LightButton } from './light-button';
 import Link from 'next/link'
 
 export const Layout = ({children}) => {
     const app = usePassengerContext();
-    
+    const router = useRouter()  
   return (
     <>
       <header>
@@ -19,9 +20,7 @@ export const Layout = ({children}) => {
       
     </header>  
     {/* <Deck cards={tarot}></Deck>  */}
-    <Link href='/'>
-    <a>Green Valley Tarot</a>
-    </Link>
+    <a onClick={() => router.push("/")}>Green Valley Tarot</a>
     {children}
     <footer>
     <LightButton/>

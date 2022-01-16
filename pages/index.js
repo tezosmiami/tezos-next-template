@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import {useState, useEffect} from 'react'
 import { usePassengerContext } from "../context/passenger-context";
-import { LightButton } from '../components/light-button';
+
 import Link from 'next/link'
 const hicdex ='https://hdapi.teztools.io/v1/graphql'
 
