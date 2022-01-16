@@ -13,7 +13,7 @@ export const Layout = ({children}) => {
     <>
       <header>
       {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
-     
+      <Link href='/deal'>[--*[\/]*--]</Link>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
       {!app.activeAccount ? "sync" : "unsync"}
       </button>
