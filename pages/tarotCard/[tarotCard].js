@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { usePassengerContext } from "../../context/passenger-context";
 
 const hicdex ='https://api.hicdex.com/v1/graphql'
