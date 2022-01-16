@@ -12,7 +12,7 @@ export const Layout = ({children}) => {
     <>
       <header>
       {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
-      <a>GreenValley Tarot</a>
+     
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
       {!app.activeAccount ? "sync" : "unsync"}
       </button>
@@ -20,7 +20,7 @@ export const Layout = ({children}) => {
     </header>  
     {/* <Deck cards={tarot}></Deck>  */}
 
- 
+    <a>GreenValley Tarot</a>
     {children}
     <footer>
     <LightButton/>
