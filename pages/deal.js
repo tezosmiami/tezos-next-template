@@ -75,7 +75,7 @@ export default function Home({ tarot }) {
       
    
       <Link key={item.id} href={`/tarotCard/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.artifact_uri.slice(7)}`} passHref>
-      
+       <div className='pop'>
       <Image 
         alt=""
         width={180}
@@ -83,7 +83,7 @@ export default function Home({ tarot }) {
         key={item.id}
         src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}>
        </Image>
-      
+       </div>
       </Link>
        
      ))}
