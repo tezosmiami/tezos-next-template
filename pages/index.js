@@ -58,7 +58,7 @@ export default function Home({ tarot }) {
      }
      const test = shuffleTarot(tarot);
      setShuffle(test)
-  }, [])
+  }, [tarot])
     
   return (
     <>
@@ -70,14 +70,17 @@ export default function Home({ tarot }) {
   <p></p>
     <div className='container'>
     {tarot.map(item => (
-      <Link key={item.id} href={`/tarotCard/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.artifact_uri.slice(7)}`}>
+      <Link key={item.id} href={`/tarotCard/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.artifact_uri.slice(7)}`} passHref>
+   
       <Image 
+  
         height={270}
         width={180}
         key={item.id}
         src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}>
-        
+      
        </Image>
+     
       </Link>
      ))}
    </div>

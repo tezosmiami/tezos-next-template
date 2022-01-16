@@ -108,7 +108,7 @@ const handleCollect = (swapId, xtzAmount) => async() => {
 };
  const ownedBy = (card[0].token_holders[card[0].token_holders.length-1].holder_id);
   const swaps = (card[0].swaps[card[0].swaps.length-1]);
-  console.log(swaps)
+
 
 return(
     <>
@@ -123,10 +123,10 @@ return(
     {card[0].title}
     </a><p></p>
         <Image 
+        alt=""
         width={400}
         height={600}
         src={'https://cloudflare-ipfs.com/ipfs/' + card[0].artifact_uri.slice(7)}>
-
         </Image>
         <p></p>
         {card[0].description}
