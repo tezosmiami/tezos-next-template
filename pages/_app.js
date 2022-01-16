@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { ThemeContext } from 'styled-components';
 import { PassengerContextProvider } from "../context/passenger-context";
 import '../styles/globals.css'
 import { Layout } from "../components/layout"
