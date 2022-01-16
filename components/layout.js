@@ -19,8 +19,9 @@ export const Layout = ({children}) => {
       
     </header>  
     {/* <Deck cards={tarot}></Deck>  */}
-
-    <a>GreenValley Tarot</a>
+    <Link href='/'>
+    <a>Green Valley Tarot</a>
+    </Link>
     {children}
     <footer>
     <LightButton/>

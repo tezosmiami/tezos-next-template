@@ -62,9 +62,10 @@ export default function Home({ tarot }) {
     
   return (
     <>
+    
       <Head>
         <title>Green Vallery Tarot</title>
-        <meta name="description" content="GreenVallery Tarot" />
+        <meta name="description" content="Green Vallery Tarot" />
         <link rel="icon" href="/tezosmiami.ico" />
       </Head>
   <p></p>
@@ -78,7 +79,6 @@ export default function Home({ tarot }) {
         width={180}
         key={item.id}
         src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}>
-      
        </Image>
      
       </Link>
