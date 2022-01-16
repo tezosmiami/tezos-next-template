@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import { useState } from 'react/cjs/react.development';
 import { usePassengerContext } from "../../context/passenger-context";
 
@@ -120,9 +121,14 @@ return(
 
     <a href={`https://hicetnunc.miami/objkt/${card[0].id}`} target="blank" rel="noopener noreferrer">
     {card[0].title}
-    </a>
-        <img className='image' src={'https://cloudflare-ipfs.com/ipfs/' + card[0].artifact_uri.slice(7)}></img>
-       
+    </a><p></p>
+        <Image 
+        width={400}
+        height={600}
+        src={'https://cloudflare-ipfs.com/ipfs/' + card[0].artifact_uri.slice(7)}>
+
+        </Image>
+        <p></p>
         {card[0].description}
         <p>Owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{ownedBy.substr(0, 5) + ". . ." + ownedBy.substr(-5)}</a></p>
          {swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}

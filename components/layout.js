@@ -11,9 +11,8 @@ export const Layout = ({children}) => {
   return (
     <>
       <header>
-      {console.log(app)}
       {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
-      
+      <a>GreenValley Tarot</a>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
       {!app.activeAccount ? "sync" : "unsync"}
       </button>
@@ -21,7 +20,7 @@ export const Layout = ({children}) => {
     </header>  
     {/* <Deck cards={tarot}></Deck>  */}
 
-    GreenValley Tarot
+ 
     {children}
     <footer>
     <LightButton/>

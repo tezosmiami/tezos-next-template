@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {useState, useEffect} from 'react'
 import { usePassengerContext } from "../context/passenger-context";
@@ -70,7 +71,13 @@ export default function Home({ tarot }) {
     <div className='container'>
     {tarot.map(item => (
       <Link key={item.id} href={`/tarotCard/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.artifact_uri.slice(7)}`}>
-      <img className='images' key={item.id} src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}></img>
+      <Image 
+        height={270}
+        width={180}
+        key={item.id}
+        src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}>
+        
+       </Image>
       </Link>
      ))}
    </div>
