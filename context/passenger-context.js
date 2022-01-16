@@ -64,8 +64,25 @@ export const PassengerContextProvider = ({ children }) => {
     setAddress("");
     //  window.location.reload();
   }
+  async function collect(swapId, xtzAmount) {
+    try {
+        const v2 = await tezos.wallet.at('KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn');
+        const op = await v2.methods
+            .collect(parseFloat(swapId))
+            .send({
+                amount: parseFloat(xtzAmount),
+                mutez: true,
+                storageLimit: 310
+            });
+        await op.confirmation(2);
+    } catch(e) {
+        console.log('Error:', e);
+        return false;
+    }
+    return true;
+};
 
-  const wrapped = { ...app, tezos, logIn, logOut, activeAccount, address};
+  const wrapped = { ...app, tezos, logIn, logOut, collect, activeAccount, address};
 
   return (
    
