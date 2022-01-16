@@ -28,7 +28,7 @@ export const LightButton = () => {
                 onClick={handleLightToggle}
                 id={'lightButton'}
                 title={'Toggle Light mode'}
-            >{lightMode ? '✧' : '✦'}</button>
+            >✦</button>
       </div>
   )
 }

@@ -84,8 +84,7 @@ export default function Home({ tarot }) {
       </Link>
      ))}
    </div>
-   
-    
+   <p></p>  
   </>
   )
 }

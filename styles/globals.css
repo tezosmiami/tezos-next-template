@@ -59,12 +59,11 @@ button {
 }
 .lightMode {
    background-color: antiquewhite;
-   color:#3800ff;
+   color:#1b2b1b;
 }
 
 footer{
- 
-  left: 0;
+
   bottom: 18px;
   width: 100%;
 
@@ -73,7 +72,6 @@ footer{
 .container{
 
   width:88vw;
-  height:100vh;
   flex-direction: row;
   flex-wrap:wrap;
   justify-content: center;
