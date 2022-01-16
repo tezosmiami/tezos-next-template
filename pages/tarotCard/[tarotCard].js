@@ -46,6 +46,7 @@ export const getStaticPaths = async() => {
 };
 
 export const getStaticProps = async({params}) => {
+  const hicdex ='https://api.hicdex.com/v1/graphql'
   const queryObjktsbyId = `
       query ObjktsbyId($Id: bigint!) {
       hic_et_nunc_token(where: {id: {_eq: $Id}}) {
