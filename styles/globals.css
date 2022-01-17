@@ -97,12 +97,7 @@ footer{
 }
 .cardcontainer{
  
-  margin:18px;
   display: flex;
   justify-content: space-around;
   
-}
-.slicedcontainer{
-  width:33%;
-
 }

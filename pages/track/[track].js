@@ -121,7 +121,7 @@ return(
     <div className='cardcontainer'>
 
     <a href={`https://hicetnunc.miami/objkt/${card[0].id}`} target="blank" rel="noopener noreferrer">
-    {card[0].title}
+    
     </a><p></p>
         <Image 
         alt=""
@@ -129,11 +129,13 @@ return(
         height={700}
         src={'https://ipfs.io/ipfs/' + card[0].display_uri.slice(7)}>
         </Image>
-        <p></p>
+        <p> {card[0].title}</p>
         <audio controls style={{ display: 'block', margin: '0 auto' }}
        src={'https://ipfs.io/ipfs/' + card[0].artifact_uri.slice(7)}>
       </audio>
-      <p></p>
+      <p>
+     
+      </p>
         {card[0].description}
         <p>Owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{ownedBy.substr(0, 5) + ". . ." + ownedBy.substr(-5)}</a></p>
          {swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
