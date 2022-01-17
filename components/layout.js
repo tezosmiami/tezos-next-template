@@ -57,7 +57,7 @@ export const Layout = ({children}) => {
     </header>  
     {/* <Deck cards={track}></Deck>  */}
     <p>
-    <a className= 'bold' onClick={() => router.push("/")}>Commodore305 Bazaar</a>
+    <a className= 'bold' onClick={() => router.push("/")}>Commodore305</a>
     </p>
     {children}
     <footer>

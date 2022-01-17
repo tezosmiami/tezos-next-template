@@ -54,9 +54,31 @@ export default function Home({ tracks }) {
     <>
     
       <Head>
-        <title>Commodore305 BAZAAR</title>
-        <meta name="description" content="Commodore305 Bazaar" />
+        <title>Commodore305</title>
+        <meta name="description" content="Commodore305" />
         <link rel="icon" href="/tezosmiami.ico" />
+        <meta name="description" content={'. . . locally grown worldwide'}/>
+        <link rel="canonical" href={`http://commodore305.xyz`}/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@commodore305"/>
+        <meta name="twitter:creator" content="@commodore305"/>
+        <meta name="twitter:title" content={'Commodore305'}/>
+        <meta
+              name="twitter:description"
+              content={'. . . locally grown worldwide'}
+                />
+               
+                <meta property="og:title" content={'commodore305'}/>
+                <meta property="og:url" content={`http://commodore305.xyz`}/>
+                <meta property="og:type" content="gallery"/>
+                <meta
+                    property="og:description"
+                    content={'. . . locally grown worldwide'}
+                />
+                {/* <meta
+                    property="og:image"
+                    content={image}
+                /> */}
       </Head>
   <p></p>
     <div className='container'>
