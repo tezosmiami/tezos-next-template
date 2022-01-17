@@ -57,7 +57,7 @@ export const Layout = ({children}) => {
     <p>
     <a onClick={() => router.push("/")}>Green Valley Tarot</a>
     </p>
-    <Link href='/deal'>[--*[\/]*--]</Link>
+    <a onClick={() => router.push("/deal")}>[--*[\/]*--]</a>
     {children}
     <footer>
     <LightButton/>
