@@ -57,7 +57,7 @@ export default function Deal  ({ tarot }) {
      }
      const hand = shuffleSliceTarot(tarot);
     //  const sliced = hand.slice((tarot.length)-3);
-  console.log(hand)
+
      setShuffle(hand)
   }, [tarot])
    
