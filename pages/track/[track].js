@@ -89,7 +89,7 @@ export const getStaticProps = async({params}) => {
   };
 };
 
-const trackCard = ({ card }) => { 
+const TrackCard = ({ card }) => { 
 const [message,setMessage] = useState();
 const app = usePassengerContext();
 const handleCollect = (swapId, xtzAmount) => async() => {
@@ -141,4 +141,4 @@ return(
   </>
 )
 }
-export default trackCard;
+export default TrackCard;
