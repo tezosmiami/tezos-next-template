@@ -15,8 +15,8 @@ body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 33px;
   height:100%;
-  background-color: #1b2b1b;
-  color: antiquewhite;
+  background-color: #181a4a;
+  color: #fff0fd;
 }
 
 a {
@@ -60,8 +60,8 @@ button {
 
 }
 .lightMode {
-   background-color: antiquewhite;
-   color:#1b2b1b;
+   background-color: #fff0fd;
+   color:#181a4a;
 }
 
 .deal {
@@ -76,7 +76,7 @@ footer{
 
 .container{
 
-  width:88vw;
+  width:100vw;
   flex-direction: row;
   flex-wrap:wrap;
   justify-content: center;
@@ -85,10 +85,12 @@ footer{
 }
 
 .pop{
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap:wrap;
-  height:270px;
-  width:180px;
+  display:flex;
+  width:333px;
+  height:420px;
+  margin:0;
 }
 .pop:hover {
   transform: scale( 1.02)

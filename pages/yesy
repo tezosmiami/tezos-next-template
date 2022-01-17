@@ -11,51 +11,51 @@ export const getStaticProps = async() => {
    }
    `;
 
-    const { errors, data } = await fetchGraphQL(queryObjkts, 'Objkts', { tag: 'tarot', address: 'tz1X8tdMUnJZtMtQQdcfPbcEeLmfZZ7ybUpM' })
+    const { errors, data } = await fetchGraphQL(queryObjkts, 'Objkts', { tag: 'track', address: 'tz1X8tdMUnJZtMtQQdcfPbcEeLmfZZ7ybUpM' })
     if (errors) {
       console.error(errors)
     }
     console.log(data)
-    const tarot = data.hic_et_nunc_token;
+    const track = data.hic_et_nunc_token;
   
   return {
-      props: {tarot},
+      props: {track},
   };
 };
 
 
-// export const getStaticProps = async({params}) => {
+export const getStaticProps = async({params}) => {
 
-//     const queryObjktbyId = `
-//         query ObjktsbyId{
-//         hic_et_nunc_token(where: {id: {_eq: ${params}}}) {
-//           artifact_uri
-//           description
-//           id
-//           swaps {
-//             amount
-//           }
-//         }
-//       }`
-//       async function fetchGraphQL(queryObjkts, name, variables) {
-//         let result = await fetch(hicdex, {
-//           method: 'POST',
-//           body: JSON.stringify({
-//             query: queryObjkts,
-//             variables: variables,
-//             operationName: name,
-//           }),
-//         })
-//         return await result.json()
-//       }
+    const queryObjktbyId = `
+        query ObjktsbyId{
+        hic_et_nunc_token(where: {id: {_eq: ${params}}}) {
+          artifact_uri
+          description
+          id
+          swaps {
+            amount
+          }
+        }
+      }`
+      async function fetchGraphQL(queryObjkts, name, variables) {
+        let result = await fetch(hicdex, {
+          method: 'POST',
+          body: JSON.stringify({
+            query: queryObjkts,
+            variables: variables,
+            operationName: name,
+          }),
+        })
+        return await result.json()
+      }
 
-//       const { errors, data } = await fetchGraphQL(queryObjktsbyId, 'ObjktsbyId', { address, tag })
-//       if (errors) {
-//         console.error(errors)
-//       }
-//       const card = data.hic_et_nunc_token
+      const { errors, data } = await fetchGraphQL(queryObjktsbyId, 'ObjktsbyId', { address, tag })
+      if (errors) {
+        console.error(errors)
+      }
+      const card = data.hic_et_nunc_token
     
-//     return {
-//         props: {card},
-//     };
-//   };
+    return {
+        props: {card},
+    };
+  };

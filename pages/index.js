@@ -10,10 +10,11 @@ const hicdex ='https://hdapi.teztools.io/v1/graphql'
 export const getStaticProps = async() => {
 
   const queryObjkts = `
-    query Objkts($tag: String!, $address: String!) {
-     hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}}, creator: {address: {_eq: $address}}})  {
+    query Objkts($address: String!) {
+     hic_et_nunc_token(where: {creator: {address: {_eq: $address}}})  {
       id
       artifact_uri
+      display_uri
       title
        description
      }
@@ -30,55 +31,47 @@ export const getStaticProps = async() => {
     })
     return await result.json()
   }
-    const { errors, data } = await fetchGraphQL(queryObjkts, 'Objkts', { tag: 'tarot', address: 'tz1X8tdMUnJZtMtQQdcfPbcEeLmfZZ7ybUpM' })
+    const { errors, data } = await fetchGraphQL(queryObjkts, 'Objkts', { address: 'tz1QtcJyqnc6RAL3s5AwzubARTEer5au7c5X' })
     if (errors) {
       console.error(errors)
     }
-    console.log(data)
-    const tarot = data.hic_et_nunc_token;
   
+    var tracks = data.hic_et_nunc_token.filter(objkt => objkt.id != '615467');
+
+   
+
+   
   return {
-      props: {tarot},
+      props: {tracks},
   };
 };
 
 
-export default function Home({ tarot }) {
-  const [shuffle,setShuffle] = useState();
-  const app = usePassengerContext();  
-  
-  useEffect(() => {
-     const shuffleTarot = (a) => {
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-     }
-     const test = shuffleTarot(tarot);
-     setShuffle(test)
-  }, [tarot])
-    
+export default function Home({ tracks }) {
+
+  const app = usePassengerContext(); 
   return (
     <>
     
       <Head>
-        <title>Green Vallery Tarot</title>
-        <meta name="description" content="Green Vallery Tarot" />
+        <title>Commodore305 BAZAAR</title>
+        <meta name="description" content="Commodore305 Bazaar" />
         <link rel="icon" href="/tezosmiami.ico" />
       </Head>
   <p></p>
     <div className='container'>
-    {tarot.map(item => (
-      <Link key={item.id} href={`/tarotCard/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.artifact_uri.slice(7)}`} passHref>
+    {tracks.map(item => (
+      <Link key={item.id} href={`/track/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.display_uri.slice(7)}`} passHref>
         <div className='pop'>
-      <Image 
-        alt=""
-        height={270}
-        width={180}
-        key={item.id}
-        src={'https://cloudflare-ipfs.com/ipfs/' + item.artifact_uri.slice(7)}>
-       </Image>
+        <Image
+          src={'https://ipfs.io/ipfs/' + item.display_uri.slice(7)}
+          width={300} 
+          height={300} 
+          alt="" />
+          <p></p>
+       <audio controls style={{ display: 'block', margin: '0 auto' }}
+       src={'https://ipfs.io/ipfs/' + item.artifact_uri.slice(7)}>
+      </audio>
       </div>
       </Link>
      ))}
