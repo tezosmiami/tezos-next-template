@@ -55,7 +55,7 @@ export const Layout = ({children}) => {
     </header>  
     {/* <Deck cards={tarot}></Deck>  */}
     <p>
-    <a onClick={() => router.push("/")}>Green Valley Tarot</a>
+    <a className= 'bold' onClick={() => router.push("/")}>Green Valley Tarot</a>
     </p>
     <a onClick={() => router.push("/deal")}>[--*[\/]*--]</a>
     {children}

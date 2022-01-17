@@ -47,7 +47,9 @@ header{
   width:100vw;
   height: 77px;
 }
-
+.bold {
+  font-weight: bold;
+}
 button {
   color: inherit;
   background-color:transparent;
