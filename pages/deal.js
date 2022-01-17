@@ -90,9 +90,9 @@ export default function Deal  ({ tarot }) {
    
    </div>
    <p></p>
-   {shuffle && shuffle.map(item => (
-      <a key={item.id}>{item.description}</a>))}
 
+   {shuffle && shuffle.map(item => (
+     <li key={item.id}>{item.description}</li>))}
    <p></p>  
   </>
   )

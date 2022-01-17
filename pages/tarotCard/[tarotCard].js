@@ -1,9 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePassengerContext } from "../../context/passenger-context";
 
 const hicdex ='https://hdapi.teztools.io/v1/graphql'
+
+const querySubjkt = `
+query Subjkt($address: String!) {
+  hic_et_nunc_holder(where: {address: {_eq: $address}}) {
+    name
+  }
+}
+`
+async function fetchGraphQL(queryObjkts, name, variables) {
+  let result = await fetch(hicdex, {
+    method: 'POST',
+    body: JSON.stringify({
+      query: queryObjkts,
+      variables: variables,
+      operationName: name,
+    }),
+  })
+  return await result.json()
+}
 
 export const getStaticPaths = async() => {
  
@@ -14,17 +33,8 @@ export const getStaticPaths = async() => {
        }
    }
    `;
-   async function fetchGraphQL(queryObjkts, name, variables) {
-    let result = await fetch(hicdex, {
-      method: 'POST',
-      body: JSON.stringify({
-        query: queryObjkts,
-        variables: variables,
-        operationName: name,
-      }),
-    })
-    return await result.json()
-  }
+   
+   
     const { errors, data } = await fetchGraphQL(queryObjkts, 'Objkts', { tag: 'tarot', address: 'tz1X8tdMUnJZtMtQQdcfPbcEeLmfZZ7ybUpM' })
     if (errors) {
       console.error(errors)
@@ -64,33 +74,35 @@ export const getStaticProps = async({params}) => {
         }
       }
     }`
-    async function fetchGraphQL(queryObjkts, name, variables) {
-      let result = await fetch(hicdex, {
-        method: 'POST',
-        body: JSON.stringify({
-          query: queryObjkts,
-          variables: variables,
-          operationName: name,
-        }),
-      })
-      return await result.json()
-    }
-
+    
     const { errors, data } = await fetchGraphQL(queryObjktsbyId, 'ObjktsbyId', { Id: params.tarotCard})
     if (errors) {
       console.error(errors)
     }
-    const card = data.hic_et_nunc_token
-
+    const card = data.hic_et_nunc_token[0]
+    var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
+    const swaps = (card.swaps[card.swaps.length-1]);
 
   return {
-      props: {card},
+      props: {card,ownedBy,swaps},
   };
 };
 
-const TarotCard = ({ card }) => { 
+const TarotCard = ({ card, ownedBy, swaps }) => { 
 const [message,setMessage] = useState();
+const [name,setName] = useState()
 const app = usePassengerContext();
+
+useEffect(async () => {
+  const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: ownedBy })
+  if (errors) {
+    console.error(errors)
+  }
+  console.log(data)
+  data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
+ }, [])
+
+
 const handleCollect = (swapId, xtzAmount) => async() => {
   try {
       setMessage('Preparing Objkt. . .');
@@ -105,8 +117,7 @@ const handleCollect = (swapId, xtzAmount) => async() => {
       setMessage(null);
   }, 3200);
 };
- const ownedBy = (card[0].token_holders[card[0].token_holders.length-1].holder_id);
-  const swaps = (card[0].swaps[card[0].swaps.length-1]);
+ 
 
 
 return(
@@ -118,18 +129,20 @@ return(
       </Head>
     <div className='cardcontainer'>
 
-    <a href={`https://hicetnunc.miami/objkt/${card[0].id}`} target="blank" rel="noopener noreferrer">
-    {card[0].title}
+    <a href={`https://hicetnunc.miami/objkt/${card.id}`} target="blank" rel="noopener noreferrer">
+    {card.title}
     </a><p></p>
         <Image 
         alt=""
         width={400}
         height={600}
-        src={'https://cloudflare-ipfs.com/ipfs/' + card[0].artifact_uri.slice(7)}>
+        src={'https://cloudflare-ipfs.com/ipfs/' + card.artifact_uri.slice(7)}>
         </Image>
         <p></p>
-        {card[0].description}
-        <p>Owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{ownedBy.substr(0, 5) + ". . ." + ownedBy.substr(-5)}</a></p>
+ 
+        <li> {card.description}</li>
+    
+        <p>owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{name || ownedBy.substr(0, 5) + "..." + ownedBy.substr(-5) }</a></p>
          {swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
     </div>
     

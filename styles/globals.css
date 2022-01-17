@@ -84,6 +84,10 @@ footer{
   
 }
 
+li{
+  list-style-type: none;
+  text-align: center;
+}
 .pop{
   flex-direction: row;
   flex-wrap:wrap;
