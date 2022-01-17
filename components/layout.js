@@ -55,11 +55,11 @@ export const Layout = ({children}) => {
         {!app.activeAccount ? "sync" : "unsync"}
       </button>  
     </header>  
-    {/* <Deck cards={tarot}></Deck>  */}
+
     <p>
-    <a className= 'bold' onClick={() => router.push("/")}>Green Valley Tarot</a>
+    <a className= 'bold' onClick={() => router.push('/')}>Green Valley Tarot</a>
     </p>
-    <a onClick={() => router.push("/deal")}>(=*\/*=)</a>
+    <Link href='/deal'>(=*\/*=)</Link>
     {children}
     <footer>
     <LightButton/>

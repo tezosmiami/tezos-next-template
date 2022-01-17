@@ -34,7 +34,7 @@ export const getStaticProps = async() => {
     if (errors) {
       console.error(errors)
     }
-    console.log(data)
+
     const tarot = data.hic_et_nunc_token;
   
   return {

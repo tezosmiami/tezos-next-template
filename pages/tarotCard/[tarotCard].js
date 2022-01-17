@@ -98,7 +98,7 @@ useEffect(async () => {
   if (errors) {
     console.error(errors)
   }
-  console.log(data)
+
   data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
  }, [])
 
