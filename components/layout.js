@@ -48,7 +48,9 @@ export const Layout = ({children}) => {
   return (
     <>
     <header>
+    <a href={`https://hicetnunc.miami/tz/${app.address}`} target="blank" rel="noopener noreferrer">
       {name || name  || app.activeAccount && app.address.substr(0, 5) + "..." + app.address.substr(-5)}
+      </a>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
         {!app.activeAccount ? "sync" : "unsync"}
       </button>  
