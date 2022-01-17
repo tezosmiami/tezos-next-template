@@ -30,7 +30,7 @@ export const getStaticPaths = async() => {
       console.error(errors)
     }
 
-    const track = data.hic_et_nunc_token;
+    const track = data.hic_et_nunc_token.filter(objkt => objkt.id != '615467');
     const paths = track.map(item => {
       return {
         params: {
@@ -92,6 +92,7 @@ export const getStaticProps = async({params}) => {
 const TrackCard = ({ card }) => { 
 const [message,setMessage] = useState();
 const app = usePassengerContext();
+
 const handleCollect = (swapId, xtzAmount) => async() => {
   try {
       setMessage('Preparing Objkt. . .');
