@@ -59,7 +59,7 @@ export const Layout = ({children}) => {
     <p>
     <a className= 'bold' onClick={() => router.push("/")}>Green Valley Tarot</a>
     </p>
-    <a onClick={() => router.push("/deal")}>[--*[\/]*--]</a>
+    <a onClick={() => router.push("/deal")}>[-*\/*-]</a>
     {children}
     <footer>
     <LightButton/>
