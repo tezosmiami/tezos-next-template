@@ -40,7 +40,7 @@ div{
 }
 
 header{
-
+  font-size:18px;
   display: flex;
   justify-content: space-around;
   align-items:center;
@@ -62,6 +62,9 @@ button {
    color:#1b2b1b;
 }
 
+.deal {
+    margin-left:12px;
+}
 footer{
 
   bottom: 18px;

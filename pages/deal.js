@@ -43,7 +43,7 @@ export const getStaticProps = async() => {
 };
 
 
-export default function Home({ tarot }) {
+export default function Deal  ({ tarot }) {
   const [shuffle,setShuffle] = useState();
   const app = usePassengerContext();  
   
@@ -91,7 +91,7 @@ export default function Home({ tarot }) {
    </div>
    <p></p>
    {shuffle && shuffle.map(item => (
-      <a>{item.description}</a>))}
+      <a key={item.id}>{item.description}</a>))}
 
    <p></p>  
   </>
