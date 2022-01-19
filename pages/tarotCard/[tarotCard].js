@@ -51,7 +51,7 @@ export const getStaticPaths = async() => {
 
   return {
       paths,
-      fallback: false,
+      fallback: 'blocking'
   };
 };
 
@@ -98,7 +98,7 @@ useEffect(async () => {
   if (errors) {
     console.error(errors)
   }
-
+ 
   data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
  }, [])
 

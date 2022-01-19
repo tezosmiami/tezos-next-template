@@ -39,6 +39,7 @@ export const getStaticProps = async() => {
   
   return {
       props: {tarot},
+      revalidate: 100
   };
 };
 
