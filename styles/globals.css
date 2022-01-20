@@ -63,5 +63,10 @@ footer{
   left: 0;
   bottom: 18px;
   width: 100%;
+}
 
+.syncMenu {
+
+  display:flex;
+  flex-direction: column;
 }
