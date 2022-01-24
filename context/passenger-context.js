@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback} from "react";
+import React, { useEffect, useState, createContext} from "react";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
 
 
-const PassengerContext = React.createContext();
+const PassengerContext = createContext();
 const options = {
   name: 'Tezos Miami'
  };
