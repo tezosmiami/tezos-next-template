@@ -7,7 +7,7 @@ const hicdex ='https://hdapi.teztools.io/v1/graphql'
 
 const querySubjkt = `
 query Subjkt($address: String!) {
-  hic_et_nunc_holder(where: {address: {_eq: $address}, supply: {_neq: "0"}}) {
+  hic_et_nunc_holder(where: {address: {_eq: $address}) {
     name
   }
 }
@@ -28,7 +28,7 @@ export const getStaticPaths = async() => {
  
   const queryObjkts = `
     query Objkts($tag: String!) {
-     hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}}})  {
+     hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}},}, supply: {_neq: "0"}})  {
       id
        }
    }
@@ -41,6 +41,7 @@ export const getStaticPaths = async() => {
     }
 
     const fotos = data.hic_et_nunc_token;
+
     const paths = fotos.map(item => {
       return {
         params: {
@@ -144,7 +145,7 @@ return(
         <li> {card.description}</li>
         <p>{supply} editions</p>
         {/* <p>owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{name || ownedBy.substr(0, 5) + "..." + ownedBy.substr(-5) }</a></p> */}
-         {swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
+         {swaps.supply && swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
     </div>
     
   </>
