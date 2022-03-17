@@ -70,6 +70,9 @@ export const Layout = ({children}) => {
     {children}
     <footer>
     <LightButton/>
+    <div>
+    experimental dApp - use at your own risk! 
+    </div>
     </footer>
     
   </>
