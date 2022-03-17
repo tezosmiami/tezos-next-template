@@ -40,15 +40,14 @@ export const getStaticPaths = async() => {
       console.error(errors)
     }
 
-    // const axios = require('axios');
-    // const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
-    // const filtered = 
-    const fotos = data.hic_et_nunc_token;
-    // filter((i) => !response.includes(i.id));
+    const axios = require('axios');
+    const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
+    const fotos = data.hic_et_nunc_token.filter(i => !response.data.includes(i.id));
+    // .filter((i) => !response.includes(i.id));
 
     const paths = fotos.map(item => {
       return {
-        params: {
+          params: {
           foto: `${item.id}`
         }
       }
@@ -86,11 +85,9 @@ export const getStaticProps = async({params}) => {
       console.error(errors)
     }
     const card = data.hic_et_nunc_token[0]
-    console.log('card123', card)
     // var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
     const swaps = card.swaps[card.swaps.length-1] || null;
     const supply= card.supply;
-    console.log('supply', supply )
 
   return {
       props: { card, supply, swaps },

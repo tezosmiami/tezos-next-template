@@ -43,13 +43,9 @@ export const getStaticProps = async() => {
     if (errors) {
       console.error(errors)
     }
-    // const axios = require('axios');
-    // const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
-    // console.log('response', response)
-    // console.log(data)
-    var fotos = data.hic_et_nunc_token
-  //   .filter((i) => !response.includes(i.id));
-  //  console.log(fotos)
+    const axios = require('axios');
+    const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
+    const fotos = data.hic_et_nunc_token.filter(i => !response.data.includes(i.id));
 
     
   return {
@@ -61,7 +57,6 @@ export const getStaticProps = async() => {
 export default function Home({ fotos }) {
   const [shuffle,setShuffle] = useState();
   const app = usePassengerContext();  
-  console.log(fotos)
   
   useEffect(() => {
      const shuffleFotos = (a) => {
