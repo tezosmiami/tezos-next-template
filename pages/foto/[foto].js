@@ -85,7 +85,7 @@ export const getStaticProps = async({params}) => {
       console.error(errors)
     }
     const card = data.hic_et_nunc_token[0]
-    // var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
+    var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
     const swaps = card.swaps[card.swaps.length-1] || null;
     const supply= card.supply;
 
@@ -99,14 +99,19 @@ const [message,setMessage] = useState();
 const [name,setName] = useState()
 const app = usePassengerContext();
 
-useEffect(async () => {
-  const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: ownedBy })
-  if (errors) {
-    console.error(errors)
-  }
- console.log(data)
-  data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
- }, [])
+// useEffect(() => {
+//   async function fetchData() {
+//     const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: ownedBy })
+//     if (errors) {
+//       console.error(errors)
+//     }
+//    console.log(data)
+//     data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
+//   }
+  
+//   fetchData();
+ 
+//  }, [])
 
 
 const handleCollect = (swapId, xtzAmount) => async() => {

@@ -36,8 +36,8 @@ export const Layout = ({children}) => {
     const [name,setName] = useState();
 
 
-    useEffect(async() => {
-
+    useEffect(() => {
+    async function fetchData() {
       if(app.address) {
         const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: app.address});
        if (errors) {
@@ -45,7 +45,9 @@ export const Layout = ({children}) => {
        }
        data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
      }
-     }, [app])
+    }
+    fetchData()
+  }, [app])
 
   return (
     <>
