@@ -7,7 +7,7 @@ const hicdex ='https://hdapi.teztools.io/v1/graphql'
 
 const querySubjkt = `
 query Subjkt($address: String!) {
-  hic_et_nunc_holder(where: {address: {_eq: $address}}) {
+  hic_et_nunc_holder(where: {address: {_eq: $address}, supply: {_neq: "0"}}) {
     name
   }
 }
