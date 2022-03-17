@@ -41,10 +41,10 @@ export const Layout = ({children}) => {
       }
   }, []);
 
-    useEffect(async() => {
+    useEffect(() => {
 
        if(app.address) {
-         const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: app.address});
+         const { errors, data } = async() => await fetchGraphQL(querySubjkt, 'Subjkt', { address: app.address});
         if (errors) {
           console.error(errors);
         }

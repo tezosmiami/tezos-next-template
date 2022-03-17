@@ -82,7 +82,7 @@ export const getStaticProps = async({params}) => {
     }
     const card = data.hic_et_nunc_token[0]
     // var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
-    const swaps = card.swaps[card.swaps.length-1];
+    const swaps = card.swaps[card.swaps.length-1] || null;
     const supply = card.supply;
 console.log(supply)
   return {
