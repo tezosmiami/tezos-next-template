@@ -34,6 +34,13 @@ export const Layout = ({children}) => {
     const router = useRouter()  
     const [name,setName] = useState();
 
+    useEffect(() => {
+      const localLightMode = window.localStorage.getItem('lightMode');
+      if(localLightMode === 'true') {
+          document.body.classList.add('lightMode');
+      }
+  }, []);
+
     useEffect(async() => {
 
        if(app.address) {
@@ -48,18 +55,18 @@ export const Layout = ({children}) => {
   return (
     <>
     <header>
-    <a href={`https://hicetnunc.miami/tz/${app.address}`} target="blank" rel="noopener noreferrer">
+    <Link href={`https://hicetnunc.miami/tz/${app.address}`} target="blank" rel="noopener noreferrer">
       {name || name  || app.activeAccount && app.address.substr(0, 5) + "..." + app.address.substr(-5)}
-      </a>
+      </Link>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
         {!app.activeAccount ? "sync" : "unsync"}
       </button>  
     </header>  
 
     <p>
-    <a className= 'bold' onClick={() => router.push('/')}>Green Valley Tarot</a>
+    <a className= 'bold' onClick={() => router.push('/')}>fotographia.xyz</a>
     </p>
-    <Link href='/deal'>(=*\/*=)</Link>
+    {/* <Link href='/deal'>(=*\/*=)</Link> */}
     {children}
     <footer>
     <LightButton/>

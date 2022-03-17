@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
         document.body.classList.add('lightMode');
     }
 }, []);
+
   return (
   <PassengerContextProvider>
     <Layout>
