@@ -40,10 +40,11 @@ export const getStaticPaths = async() => {
       console.error(errors)
     }
 
-    const axios = require('axios');
-    const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
-    console.log(response);
+    // const axios = require('axios');
+    // const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
+    // const filtered = 
     const fotos = data.hic_et_nunc_token;
+    // filter((i) => !response.includes(i.id));
 
     const paths = fotos.map(item => {
       return {
@@ -85,10 +86,12 @@ export const getStaticProps = async({params}) => {
       console.error(errors)
     }
     const card = data.hic_et_nunc_token[0]
+    console.log('card123', card)
     // var ownedBy = (card.token_holders[card.token_holders.length-1].holder_id);
     const swaps = card.swaps[card.swaps.length-1] || null;
-    const supply = card.supply || null;
-console.log(supply)
+    const supply= card.supply;
+    console.log('supply', supply )
+
   return {
       props: { card, supply, swaps },
   };
@@ -148,7 +151,7 @@ return(
         <li> {card.description}</li>
         <p>{supply} editions</p>
         {/* <p>owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{name || ownedBy.substr(0, 5) + "..." + ownedBy.substr(-5) }</a></p> */}
-         {swaps.supply && swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
+         {supply && swaps?.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
     </div>
     
   </>

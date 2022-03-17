@@ -43,10 +43,13 @@ export const getStaticProps = async() => {
     if (errors) {
       console.error(errors)
     }
-  
-    var fotos = data.hic_et_nunc_token;
-
-   console.log(data)
+    // const axios = require('axios');
+    // const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
+    // console.log('response', response)
+    // console.log(data)
+    var fotos = data.hic_et_nunc_token
+  //   .filter((i) => !response.includes(i.id));
+  //  console.log(fotos)
 
     
   return {
