@@ -15,6 +15,7 @@ query Subjkt($address: String!) {
   }
 }
 `
+
 async function fetchGraphQL(queryObjkts, name, variables) {
   let result = await fetch(hicdex, {
     method: 'POST',
@@ -34,29 +35,23 @@ export const Layout = ({children}) => {
     const router = useRouter()  
     const [name,setName] = useState();
 
-    useEffect(() => {
-      const localLightMode = window.localStorage.getItem('lightMode');
-      if(localLightMode === 'true') {
-          document.body.classList.add('lightMode');
-      }
-  }, []);
 
-    useEffect(() => {
+    useEffect(async() => {
 
-       if(app.address) {
-         const { errors, data } = async() => await fetchGraphQL(querySubjkt, 'Subjkt', { address: app.address});
-        if (errors) {
-          console.error(errors);
-        }
-        data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
-      }
-      }, [app])
+      if(app.address) {
+        const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: app.address});
+       if (errors) {
+         console.error(errors);
+       }
+       data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
+     }
+     }, [app])
 
   return (
     <>
     <header>
     <Link href={`https://hicetnunc.miami/tz/${app.address}`} target="blank" rel="noopener noreferrer">
-      {name || name  || app.activeAccount && app.address.substr(0, 5) + "..." + app.address.substr(-5)}
+      {name  || app.activeAccount && app.address.substr(0, 5) + "..." + app.address.substr(-5)}
       </Link>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
         {!app.activeAccount ? "sync" : "unsync"}

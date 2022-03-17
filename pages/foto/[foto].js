@@ -99,14 +99,14 @@ const [message,setMessage] = useState();
 const [name,setName] = useState()
 const app = usePassengerContext();
 
-// useEffect(async () => {
-//   const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: ownedBy })
-//   if (errors) {
-//     console.error(errors)
-//   }
- 
-//   data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
-//  }, [])
+useEffect(async () => {
+  const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: ownedBy })
+  if (errors) {
+    console.error(errors)
+  }
+ console.log(data)
+  data.hic_et_nunc_holder[0] && setName(data.hic_et_nunc_holder[0].name);
+ }, [])
 
 
 const handleCollect = (swapId, xtzAmount) => async() => {

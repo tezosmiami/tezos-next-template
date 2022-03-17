@@ -74,8 +74,8 @@ export default function Home({ fotos }) {
     <>
     
       <Head>
-        <title>Fotographia.xyz</title>
-        <meta name="description" content="Fotographia.xyz" />
+        <title>fotographia.xyz</title>
+        <meta name="description" content="fotographia.xyz" />
         <link rel="icon" href="/tezosmiami.ico" />
       </Head>
   <p></p>
