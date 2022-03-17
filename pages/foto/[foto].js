@@ -28,7 +28,7 @@ export const getStaticPaths = async() => {
  
   const queryObjkts = `
     query Objkts($tag: String!) {
-     hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}},}, supply: {_neq: "0"}})  {
+     hic_et_nunc_token(where: {token_tags: {tag: {tag: {_eq: $tag}}}, supply: {_neq: "0"}})  {
       id
        }
    }
