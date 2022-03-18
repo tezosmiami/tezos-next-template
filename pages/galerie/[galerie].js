@@ -6,6 +6,14 @@ import Link from 'next/link'
 
 const hicdex ='https://hdapi.teztools.io/v1/graphql'
 
+const querySubjkt = `
+query query_name ($name: String!) {
+  hic_et_nunc_holder(where: {name: {_eq: $name}}) {
+    address
+  }
+}
+`
+
 async function fetchGraphQL(queryObjkts, name, variables) {
   let result = await fetch(hicdex, {
     method: 'POST',
@@ -27,6 +35,7 @@ export const getStaticPaths = async() => {
       token {
         creator {
           address
+          name
         }
       }
     }
@@ -45,7 +54,7 @@ export const getStaticPaths = async() => {
     const paths = fotographos.map(f => {
       return {
           params: {
-          perfile: `${f.address}`
+          perfile: `${f.name || f.address}`,
         }
       }
     })
@@ -80,11 +89,25 @@ query query_address($address: String!, $tag: String!) {
     })
     return await result.json()
   }
-  console.log('perfile',params.perfile)
-    const { errors, data } = await fetchGraphQL(objktsByAddress, 'query_address', { address: params.perfile, tag: 'photography' })
+
+  const getAddress = async () => {
+
+    const { errors, data } = await fetchGraphQL(querySubjkt, 'query_name', { name: params.perfile })
     if (errors) {
       console.error(errors)
     }
+
+    return data.hic_et_nunc_holder[0].address
+
+  }
+    
+    const address = params.perfile.length == 36 ? params.perfile : await getAddress();
+   
+    const { errors, data } = await fetchGraphQL(objktsByAddress, 'query_address', { address: address, tag: 'photography' })
+    if (errors) {
+      console.error(errors)
+    }
+
     const axios = require('axios');
     const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
     const fotos = data.hic_et_nunc_token.filter(i => !response.data.includes(i.id));

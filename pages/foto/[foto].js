@@ -155,10 +155,11 @@ return(
         <a href={`https://hicetnunc.miami/objkt/${card.id}`} target="blank" className='bold' rel="noopener noreferrer">
     {card.title}
     </a>
-    <Link key={card.address} href={`/perfile/${card.creator.address || card.creator.address}`} passHref>
-    <a>
-    by: {card.creator.name || card.creator.address}
+    <Link key={card.address} href={`/galerie/${card.creator.name || card.creator.address}`} passHref>
+    <p>
+    by:  <a> {card.creator.name || card.creator.address}
     </a>
+    </p>
     </Link>
         <li> {card.description}</li>
         <p>{supply} editions</p>

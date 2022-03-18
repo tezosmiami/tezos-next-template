@@ -26,9 +26,12 @@ body {
 a {
   color: var(--text);
   text-decoration: none;
-  cursor:pointer;
+  cursor:pointer; 
 }
+a:hover {
+  background-color:gray;
 
+}
 * {
   box-sizing: border-box;
 }
@@ -46,9 +49,9 @@ div{
 header{
   font-size:18px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items:center;
-  width:88vw;
+  width:100vw;
   height: 77px;
 }
 .bold {
