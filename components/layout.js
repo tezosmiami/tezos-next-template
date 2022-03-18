@@ -52,9 +52,10 @@ export const Layout = ({children}) => {
   return (
     <>
     <header>
-    <Link href={`https://hicetnunc.miami/tz/${app.address}`} target="blank" rel="noopener noreferrer">
+    <Link key={app.address} href={`/perfile/${app.address}`} passHref>
       {name  || app.activeAccount && app.address.substr(0, 5) + "..." + app.address.substr(-5)}
       </Link>
+  
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
         {!app.activeAccount ? "sync" : "unsync"}
       </button>  
@@ -63,10 +64,10 @@ export const Layout = ({children}) => {
     <p>
     <a className= 'bold' onClick={() => router.push('/')}>fotographia.xyz</a>
     </p>
+    <LightButton/>
     {/* <Link href='/deal'>(=*\/*=)</Link> */}
     {children}
     <footer>
-    <LightButton/>
     <div>
     experimental dApp - use at your own risk! 
     </div>

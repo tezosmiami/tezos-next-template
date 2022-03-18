@@ -2,16 +2,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import { usePassengerContext } from "../../context/passenger-context";
+import Link from 'next/link'
 
 const hicdex ='https://hdapi.teztools.io/v1/graphql'
 
-const querySubjkt = `
-query Subjkt($address: String!) {
-  hic_et_nunc_holder(where: {address: {_eq: $address}) {
-    name
-  }
-}
-`
+// const querySubjkt = `
+// query Subjkt($address: String!) {
+//   hic_et_nunc_holder(where: {address: {_eq: $address}) {
+//     name
+//   }
+// }
+// `
 async function fetchGraphQL(queryObjkts, name, variables) {
   let result = await fetch(hicdex, {
     method: 'POST',
@@ -42,13 +43,13 @@ export const getStaticPaths = async() => {
 
     const axios = require('axios');
     const response = await axios.get('https://raw.githubusercontent.com/hicetnunc2000/hicetnunc/main/filters/o.json');
-    const fotos = data.hic_et_nunc_token.filter(i => !response.data.includes(i.id));
+    const fotos = data.hic_et_nunc_token.filter(f => !response.data.includes(f.id));
     // .filter((i) => !response.includes(i.id));
-
-    const paths = fotos.map(item => {
+    console.log(fotos)
+    const paths = fotos.map(f => {
       return {
           params: {
-          foto: `${item.id}`
+          foto: `${f.id}`
         }
       }
     })
@@ -68,6 +69,10 @@ export const getStaticProps = async({params}) => {
         id
         title
         supply
+        creator {
+          address
+          name
+        }
         token_holders{
          holder_id
         }
@@ -140,9 +145,6 @@ return(
       </Head>
     <div className='cardcontainer'>
 
-    <a href={`https://hicetnunc.miami/objkt/${card.id}`} target="blank" rel="noopener noreferrer">
-    {card.title}
-    </a><p></p>
         <Image 
         alt=""
         width={400}
@@ -150,6 +152,14 @@ return(
         src={'https://cloudflare-ipfs.com/ipfs/' + card.artifact_uri.slice(7)}>
         </Image>
         <p></p>
+        <a href={`https://hicetnunc.miami/objkt/${card.id}`} target="blank" className='bold' rel="noopener noreferrer">
+    {card.title}
+    </a>
+    <Link key={card.address} href={`/perfile/${card.creator.address || card.creator.address}`} passHref>
+    <a>
+    by: {card.creator.name || card.creator.address}
+    </a>
+    </Link>
         <li> {card.description}</li>
         <p>{supply} editions</p>
         {/* <p>owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{name || ownedBy.substr(0, 5) + "..." + ownedBy.substr(-5) }</a></p> */}

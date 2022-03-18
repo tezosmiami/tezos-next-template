@@ -62,7 +62,7 @@ export const PassengerContextProvider = ({ children }) => {
     await wallet.client.clearActiveAccount();
     setActiveAccount("")
     setAddress("");
-    //  window.location.reload();
+   window.location.reload();
   }
   async function collect(swapId, xtzAmount) {
     try {
