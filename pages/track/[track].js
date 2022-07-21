@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { usePassengerContext } from "../../context/passenger-context";
 
-const hicdex ='https://hdapi.teztools.io/v1/graphql'
+const hicdex ='https://api.hicdex.com/v1/graphql'
 
 export const getStaticPaths = async() => {
  
@@ -157,7 +157,8 @@ return(
         {card.description}
         {/* <p>Owned by: <a href={`https://hicetnunc.miami/tz/${ownedBy}`} target="blank" rel="noopener noreferrer">{ownedBy.substr(0, 5) + ". . ." + ownedBy.substr(-5)}</a></p> */}
         <p>
-         {swaps.status==0 ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> : 'not for sale'}
+         {(swaps.status==0 && app.address) ? <a onClick={handleCollect(swaps.id, swaps.price)}>{`collect for ${(swaps.price* 0.000001).toFixed(2)} tez`}</a> 
+         : swaps.amount == 0 ? 'not for sale' : <button onClick={() => app.logIn()}>sync to collect</button>}
          </p>
     </div>
     

@@ -4,7 +4,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 
 const PassengerContext = React.createContext();
 const options = {
-  name: 'Tezos Miami'
+  name: 'Commodore305'
  };
   
 if (process.browser){

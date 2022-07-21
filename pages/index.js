@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import { usePassengerContext } from "../context/passenger-context";
 
 import Link from 'next/link'
-const hicdex ='https://hdapi.teztools.io/v1/graphql'
+const hicdex ='https://api.hicdex.com/v1/graphql'
 
 
 export const getStaticProps = async() => {
@@ -56,7 +56,7 @@ export default function Home({ tracks }) {
       <Head>
         <title>Commodore305</title>
         <meta name="description" content="Commodore305" />
-        <link rel="icon" href="/tezosmiami.ico" />
+        <link rel="icon" href="/commlogo.jpg" />
         <meta name="description" content={'. . . locally grown worldwide'}/>
         <link rel="canonical" href={`http://commodore305.xyz`}/>
         <meta name="twitter:card" content="summary"/>
