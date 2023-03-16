@@ -83,12 +83,13 @@ export default function Home({ tracks }) {
   <p></p>
     <div className='container'>
     {tracks.map(item => (
-      <Link key={item.id} href={`/track/${item.id}`} token={`https://cloudflare-ipfs.com/ipfs/${item.display_uri.slice(7)}`} passHref>
+      <Link key={item.id} href={`/track/${item.id}`} token={`https:/ipfs.io/ipfs/${item.display_uri.slice(7)}`} passHref>
         <div className='pop'>
         <Image
           src={'https://ipfs.io/ipfs/' + item.display_uri.slice(7)}
           width={300} 
           height={300} 
+          unoptimized
           alt="" />
           <p></p>
        <audio controls style={{ display: 'block', margin: '0 auto' }}

@@ -145,6 +145,7 @@ return(
         alt=""
         width={600}
         height={700}
+        unoptimized
         src={'https://ipfs.io/ipfs/' + card.display_uri.slice(7)}>
         </Image>
         <p> {card.title}</p>
