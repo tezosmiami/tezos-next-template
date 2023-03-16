@@ -119,21 +119,23 @@ return(
         <meta name="description" content={'. . . locally grown worldwide'}/>
         <link rel="canonical" href={`http://commodore305.xyz/track/${card.id}`}/>
         <meta name="twitter:card" content="summary"/>
-                <meta name="twitter:site" content="@commodore305"/>
-                <meta name="twitter:creator" content="@commodore305"/>
-                <meta name="twitter:title" content={card.title}/>
-                <meta
-                    name="twitter:description"
-                    content={card.description}
-                />
-                
-                <meta property="og:title" content={card.title}/>
-                <meta property="og:url" content={`http://commodore305.xyz/track/${card.id}`}/>
-                <meta property="og:type" content="gallery"/>
-                <meta
-                    property="og:description"
-                    content={card.description}
-                />
+        <meta name="twitter:site" content="@commodore305"/>
+        <meta name="twitter:creator" content="@commodore305"/>
+        <meta name="twitter:title" content={card.title}/>
+        <meta name="twitter:description" content={card.description} />
+        <meta name="twitter:image" content={`https://ipfs.io/ipfs/${card.artifact_uri.slice(7)}`} />
+        <meta
+            name="twitter:description"
+            content={card.description}
+        />
+        
+        <meta property="og:title" content={card.title}/>
+        <meta property="og:url" content={`https://commodore305.xyz/track/${card.id}`}/>
+        <meta property="og:type" content="gallery"/>
+        <meta
+            property="og:description"
+            content={card.description}
+        />
     
       </Head>
     <div className='cardcontainer'>

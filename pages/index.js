@@ -56,7 +56,7 @@ export default function Home({ tracks }) {
       <Head>
         <title>Commodore305</title>
         <meta name="description" content="Commodore305" />
-        <link rel="icon" href="/commlogo.jpg" />
+        <link rel="icon" href="/yantra.jpg" />
         <meta name="description" content={'. . . locally grown worldwide'}/>
         <link rel="canonical" href={`http://commodore305.xyz`}/>
         <meta name="twitter:card" content="summary"/>
@@ -69,8 +69,9 @@ export default function Home({ tracks }) {
                 />
                
                 <meta property="og:title" content={'commodore305'}/>
-                <meta property="og:url" content={`http://commodore305.xyz`}/>
+                <meta property="og:url" content={`https://commodore305.xyz`}/>
                 <meta property="og:type" content="gallery"/>
+                <meta name="twitter:image" content="https://gateway.pinata.cloud/ipfs/QmWbsu8tKF6z1KUGpe8Kbdr8KK2E8fQgEcUmdfgi1AA6em" />
                 <meta
                     property="og:description"
                     content={'. . . locally grown worldwide'}
