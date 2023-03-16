@@ -56,7 +56,7 @@ export default function Home({ tracks }) {
       <Head>
         <title>Commodore305</title>
         <meta name="description" content="Commodore305" />
-        <link rel="icon" href="/yantra.jpg" />
+        <link rel="icon" href="/logo.jpg" />
         <meta name="description" content={'. . . locally grown worldwide'}/>
         <link rel="canonical" href={`http://commodore305.xyz`}/>
         <meta name="twitter:card" content="summary"/>
