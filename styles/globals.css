@@ -69,4 +69,10 @@ footer{
 
   display:flex;
   flex-direction: column;
+  width:auto;
+}
+.svg{
+
+  pointer-events: cursor;
+  color:red;
 }

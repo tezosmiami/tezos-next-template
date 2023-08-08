@@ -134,7 +134,8 @@ export const PassengerContextProvider = ({ children }) => {
     unsyncEth, 
     tezosAccount, 
     tezosAddress,
-    ethAddress
+    ethAddress,
+    ethProvider
     
   };
 

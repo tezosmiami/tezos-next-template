@@ -5,6 +5,7 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import { usePassengerContext } from "../context/passenger-context";
 import { LightButton } from '../components/light-button';
+// import { Tezos } from '../components/tezos';
 
 export default function Home() {
  const [syncMenu, setSyncMenu] = useState('')
@@ -26,18 +27,27 @@ console.log(app)
       
       <header>
       {/* {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)} */}
+      <div className='syncMenu'>
+      <a>{app.tezosAddress && app.tezosAddress.substr(0, 5) + ". . ." + app.tezosAddress.substr(-5)}</a>
+      <a>{app.ethAddress && app.ethAddress.substr(0, 5) + ". . ." + app.ethAddress.substr(-5)}</a>
       
+</div>
       {!syncMenu && <button onClick={handleToggle}> 
       {!app.tezosAddress && !app.ethAddress ? "sync" : "unsync"}
+
       </button>}
     {console.log(app)}
+   
       {syncMenu &&  <div className='syncMenu'>
          <button onClick={handleToggle}> x</button>
-        <button onClick={() => !app.tezosAddress ? app.syncTezos() : app.unsyncTezos()}>{!app.tezosAddress ? "sync Tezos" : "unsync Tezos"}</button>
-     <button onClick={() => !app.ethAddress ? app.syncEth() : app.unsyncEth()} >{!app.ethAddress ? "sync Ethereum " : "unsync Ethereum"}</button>
+         <button onClick={() => !app.tezosAddress ? app.syncTezos() : app.unsyncTezos()}>{!app.tezosAddress ? "sync Tezos" : "unsync Tezos"}</button>
+      <button onClick={() => !app.ethAddress ? app.syncEth() : app.unsyncEth()} >{!app.ethAddress ? "sync Ethereum " : "unsync Ethereum"}</button>
       </div>}
+
     </header>   
+    
     <footer>
+      
     <LightButton/>
     </footer>
     
